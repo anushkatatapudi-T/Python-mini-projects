@@ -10,7 +10,7 @@ response = requests.get(url,params={
     'language':'en',
     'format':'json'
 })
-print(response.status_code)
+print("Successfully running : ",response.status_code)
 
 data = response.json()
 if 'results' in data :
@@ -25,21 +25,51 @@ if 'results' in data :
         'latitude':latitude,
         'longitude':longitude,
         'current':
-        "temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m"
+        "temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code"
     })
     print(weather_response.status_code)
     data2=weather_response.json()
     if 'current' in data2:
         current=data2['current']
+        weather_code = current['weather_code']
+
+        weather_descriptions = {
+                0: "Clear sky",
+                1: "Mainly clear",
+                2: "Partly cloudy",
+                3: "Overcast",
+                45: "Fog",
+                48: "Rime fog",
+                51: "Light drizzle",
+                53: "Moderate drizzle",
+                55: "Dense drizzle",
+                61: "Slight rain",
+                63: "Moderate rain",
+                65: "Heavy rain",
+                71: "Slight snow",
+                73: "Moderate snow",
+                75: "Heavy snow",
+                80: "Rain showers",
+                81: "Moderate rain showers",
+                82: "Heavy rain showers",
+                95: "Thunderstorm",
+                96: "Thunderstorm with hail",
+                99: "Thunderstorm with heavy hail"
+    
+}
+
+        description = weather_descriptions.get(weather_code, "Unknown condition")
+        print("Weather:", description)
         temperature_2m =current['temperature_2m']
         relative_humidity_2m = current['relative_humidity_2m']
-        apperent_temperature = current['apparent_temperature']
+        apparent_temperature = current['apparent_temperature']
         wind_speed_10m = current['wind_speed_10m']
         print("\n===== WEATHER REPORT =====")
         print("Temperature:", temperature_2m, "°C")
         print("Humidity:", relative_humidity_2m, "%")
-        print("Feels like:", apperent_temperature, "°C")
+        print("Feels like:", apparent_temperature, "°C")
         print("Wind Speed:", wind_speed_10m, "km/h")
+        print("Weather :",description)
     else :
         print("No weather found!")
 
