@@ -1,4 +1,16 @@
-# print("Student:",s1.name)
-# print("Marks:",s1.marks)
-# print("Student:",s2.name)
-# print("Marks:",s2.marks)
+class Employee:
+    def company(self):
+        print("I'm working in a company")
+class developer(Employee):
+    def dev(self):
+        print("Working as a developer")
+class designer(Employee):
+    def design(self):
+        print("Working as designer")
+
+c1 = designer()
+c2 = developer()
+c1.company()
+c2.company()
+c1.design()
+c2.dev()

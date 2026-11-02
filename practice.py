@@ -190,51 +190,138 @@
 # print(Calci.to_div(50, 30))
 # print(Calci.to_sub(20,6))
 
-class BankAccount:
-    def __init__(self,account_number,pin,balance):
-        self.account_number=account_number
-        self.__pin = pin
-        self.__balance=balance
-    def get_pin(self):
-        return self.__pin
-    def get_balance(self):
-        return self.__balance
-    def deposit(self,amount):
-        if amount > 0 :
-            self.__balance = amount + self.__balance
-            return self.__balance
+# class BankAccount:
+#     def __init__(self,account_number,pin,balance):
+#         self.account_number=account_number
+#         self.__pin = pin
+#         self.__balance=balance
+#     def get_pin(self):
+#         return self.__pin
+#     def get_balance(self):
+#         return self.__balance
+#     def deposit(self,amount):
+#         if amount > 0 :
+#             self.__balance = amount + self.__balance
+#             return self.__balance
         
-        else :
-            return "Please enter correct amount"
+#         else :
+#             return "Please enter correct amount"
 
-    def withdraw(self,amount):
-        if amount > 0 :
-            if amount <= self.__balance:
-                self.__balance= self.__balance - amount
-                return self.__balance
-            else:
-                return 'insufficient balance'
-        else :
-            return 'Please try again later'
-    def change_pin(self,old_pin,new_pin):
-        if old_pin == self.__pin:
-            self.__pin = new_pin
-            return self.__pin
-        else :
-            return 'incorrect pin '
-    def check_balance(self):
-        n = print('your current balance is :',self.__balance)
+#     def withdraw(self,amount):
+#         if amount > 0 :
+#             if amount <= self.__balance:
+#                 self.__balance= self.__balance - amount
+#                 return self.__balance
+#             else:
+#                 return 'insufficient balance'
+#         else :
+#             return 'Please try again later'
+#     def change_pin(self,old_pin,new_pin):
+#         if old_pin == self.__pin:
+#             self.__pin = new_pin
+#             return self.__pin
+#         else :
+#             return 'incorrect pin '
+#     def check_balance(self):
+#         n = print('your current balance is :',self.__balance)
         
     
 
-b1 = BankAccount(23344534,2002,1000)
-b1.withdraw(4000)
-b1.change_pin(2002,2007)
-b1.deposit(2000)
-print(b1.get_pin())
-print(b1.withdraw(500))
-print(b1.get_balance())
+# b1 = BankAccount(23344534,2002,1000)
+# b1.withdraw(4000)
+# b1.change_pin(2002,2007)
+# b1.deposit(2000)
+# print(b1.get_pin())
+# print(b1.withdraw(500))
+# print(b1.get_balance())
 
-b1.check_balance()
+# b1.check_balance()
 
 
+#inheritance
+# class Animal:
+#     def eat(self):
+#         print('Animal is eating')
+# class child(Animal):
+#     def bow(self):
+#         print('dog bow bow')
+# d1=child()
+# d1.eat()
+# d1.bow()
+
+class Vehicle:
+    def start(self):
+        print('Vehicle started')
+class Car(Vehicle):
+    def drive(self):
+        print('Car is driving')
+c1=Car()
+c1.start()
+c1.drive()
+#single inheritance
+class Person:
+    def display_name(self):
+        print('My name is anushka')
+class Student(Person):
+    pass
+s1 = Student()
+s1.display_name()
+#multiple inheritance
+class Python:
+    def learn_python(self):
+        print("python is very beginner language")
+class SQL :
+    def learn_sql(self):
+        print("Learning sql is very important")
+class Developer(Python,SQL):
+    pass
+l1=Developer()
+l1.learn_python()
+l1.learn_sql()
+#MULTILEVEL INHERITANCE
+
+class grandparents:
+    def grand(self):
+        print("they're my grand parents")
+class parents(grandparents):
+    def parent(self):
+        print("they're my parents")
+class child(parents):
+    def gen(self):
+        print("Im a genz kid")
+s1 = child()
+s1.gen()
+s1.grand()
+s1.parent()
+
+#Hierarchical inheritance
+class Employee:
+    def company(self):
+        print("I'm working in a company")
+class developer(Employee):
+    def dev(self):
+        print("Working as a developer")
+class designer(Employee):
+    def design(self):
+        print("Working as designer")
+
+c1 = designer()
+c2 = developer()
+c1.company()
+c2.company()
+c1.design()
+c2.dev()
+
+#hybrid inheritance
+class person:
+    def human(self):
+        n = input("enter ur name : ")
+        print(f"my name is {n}")
+class student(person):
+    pass
+class employee(person):
+    pass
+class intern(student,employee):
+    pass
+i = intern()
+i.human()
